@@ -1,71 +1,70 @@
 public class ArrayList<T extends Comparable<T>> implements List<T>{
     //Instance Variables
-    ArrayList <T> a= new ArrayList();
+    private T[] array;
+    private int size = 0; //checks index 0
     private boolean isSorted;
 
 
-
+@SuppressWarnings("unchecked") //gets rid of underlined stuff
     public ArrayList(ArrayList<T> a, boolean isSorted) { //Constructor
-        this.a = a; //error
+        array = (T[]) new Comparable[2];
         this.isSorted = true;
-
-
-
-
     }
     
     public ArrayList() {
     }
-    @Override
+    
+    //Completed
     public boolean add(T element) {
-        if(element != null){
-            a.add(-1, element);
-            isSorted = false;
+        if(element == null){
+            isSorted = true; //not sure
+            return false;
+        }
+        else {
+            array[size] = element;
+            size++;
             return true;
         }
-        return false;
-        
     }
 
     @Override
     public boolean add(int index, T element) {
-        if(element != null && index < a.size()){
-            a.add(index, element);
-            isSorted = false;
-            return true;
-        }
         return false;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
     public void clear() {
-        for(int i = 0; i <= a.size(); i++){
-            a.remove(i);
-            isSorted = true;
+        array = (T[]) new Comparable[2];
+        size = 0;
         }
         
-    }
+    
 
-    @Override
+   //Completed
     public T get(int index) {
-        if(index < a.size()){
-            T element = a.get(index);
-            return element;
+        if(index >= 0){
+            if(index < array.length){
+                return array[index];
+            }
         }
         return null;
     }
 
     @Override
     public int indexOf(T element) {
-        if(a.indexOf(element) == 0){
-            return a.indexOf(element);
+        for(int i = 0; i<= size; i++){
+            if(array[i].equals(element)){
+                return i;
+            }
         }
+        return 0; //double-check
+       
         
     }
 
     @Override
     public boolean isEmpty() {
-        if(a.isEmpty()){
+        if(size == 0){
             return true;
         }
         return false;
@@ -75,7 +74,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     public int size() {
       
         int size = 0;
-        for(int i = 0; i<= a; i++){
+        for(int i = 0; i<= array.length; i++){
              size += 1;
          }
     
@@ -84,14 +83,13 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
 
     @Override
     public void sort() {
-        a.sort();
+        // TODO Auto-generated method stub
         
     }
 
     @Override
     public T remove(int index) {
-        T remove = a.remove(index);
-        return remove;
+        return T;
     }
 
     @Override
