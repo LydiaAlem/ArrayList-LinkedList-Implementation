@@ -81,42 +81,43 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     
         return size;
     }
-
+//Use a sorting method.
+//Bilese
     @Override
     public void sort() {
         // TODO Auto-generated method stub
         
     }
-
+//Lydia
     @Override
     public T remove(int index) {
         return T;
     }
-
+//Bilese
     @Override
     public void equalTo(T element) {
         // TODO Auto-generated method stub
         
     }
-
+//Lydia
     @Override
     public void reverse() {
         // TODO Auto-generated method stub
         
     }
-
+//Bilese
     @Override
     public void merge(List<T> otherList) {
         // TODO Auto-generated method stub
         
     }
-
+//Lydia
     @Override
     public void pairSwap() {
         // TODO Auto-generated method stub
         
     }
-
+//Bilese
     @Override
     public boolean isSorted() {
         // TODO Auto-generated method stub
