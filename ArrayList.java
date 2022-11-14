@@ -14,7 +14,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     public ArrayList() {
     }
     
-    //Completed
+    //Completed -Lydia
     public boolean add(T element) {
         if(element == null){
             isSorted = true; //not sure
@@ -26,12 +26,12 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
             return true;
         }
     }
-
+//Bilese
     @Override
     public boolean add(int index, T element) {
         return false;
     }
-
+//Completed -Lydia
     @SuppressWarnings("unchecked")
     public void clear() {
         array = (T[]) new Comparable[2];
@@ -40,7 +40,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         
     
 
-   //Completed
+ //Completed -Lydia
     public T get(int index) {
         if(index >= 0){
             if(index < array.length){
@@ -49,7 +49,8 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
         return null;
     }
-
+ 
+ //Almost complete
     @Override
     public int indexOf(T element) {
         for(int i = 0; i<= size; i++){
@@ -61,7 +62,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
        
         
     }
-
+//Completed-Lydia
     @Override
     public boolean isEmpty() {
         if(size == 0){
@@ -69,7 +70,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
         return false;
     }
-
+//Completed-Lydia
     @Override
     public int size() {
       
