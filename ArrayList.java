@@ -1,109 +1,116 @@
+import java.util.Arrays;
+
 public class ArrayList<T extends Comparable<T>> implements List<T>{
-    //Instance Variables
+    //Class Attributes
     private T[] array;
-    private int size = 0; //checks index 0
+    private int size = 0; //checks index 0, using it for size()
     private boolean isSorted;
 
-
+//Constructor
 @SuppressWarnings("unchecked") //gets rid of underlined stuff
     public ArrayList(ArrayList<T> a, boolean isSorted) { //Constructor
         array = (T[]) new Comparable[2];
         this.isSorted = true;
     }
-    
-    public ArrayList() {
-    }
-    
-    //Completed -Lydia
+ 
+//Completed-Lydia
+    @Override
     public boolean add(T element) {
         if(element == null){
-            isSorted = true; //not sure
             return false;
         }
         else {
-            array[size] = element;
-            size++;
+            array = Arrays.copyOf(array, array.length + 1); //creates a new array from old array and allocate one more element
+            array[array.length - 1] = element;
+            isSorted = false;
             return true;
         }
     }
 //Bilese
     @Override
-    public boolean add(int index, T element) {
+    public boolean add(int index, T element) {//use INSERTION/BUBBLE/SELECTION method from canvas page
         return false;
     }
-//Completed -Lydia
-    @SuppressWarnings("unchecked")
+//Completed-Lydia
+    @SuppressWarnings("unchecked") //DONE
     public void clear() {
         array = (T[]) new Comparable[2];
         size = 0;
-        }
-        
-    
-
- //Completed -Lydia
+    }
+//Completed-Lydia
+    @Override
     public T get(int index) {
-        if(index >= 0){
+        if(index >= 0){ //checks if the index isnt illegal
             if(index < array.length){
                 return array[index];
             }
         }
         return null;
     }
- 
- //Almost complete
+//Completed-Lydia
     @Override
     public int indexOf(T element) {
-        for(int i = 0; i<= size; i++){
+        for(int i = 0; i <array.length; i++){
             if(array[i].equals(element)){
                 return i;
             }
         }
-        return 0; //double-check
-       
-        
+        return 0;
     }
+
 //Completed-Lydia
-    @Override
+    @Override 
     public boolean isEmpty() {
-        if(size == 0){
+        if(array.length == 0){ 
+            isSorted = true;
             return true;
         }
         return false;
     }
-//Completed-Lydia
-    @Override
+
+//Completed
+    @Override 
     public int size() {
-      
         int size = 0;
-        for(int i = 0; i<= array.length; i++){
-             size += 1;
-         }
-    
+        for(int i = 0; i< array.length; i++){
+            size += 1;
+        }
         return size;
     }
-//Use a sorting method.
 //Bilese
     @Override
     public void sort() {
-        // TODO Auto-generated method stub
-        
     }
-//Lydia
+//Lydia - once sorted is finished 
     @Override
     public T remove(int index) {
-        return T;
+        try{
+            for(int i = 0; i<= array.length; i++){
+                if(array[i] == (array[index])){
+                    return array[i];
+                }
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+        }
+        return null;
     }
+
 //Bilese
     @Override
     public void equalTo(T element) {
         // TODO Auto-generated method stub
         
     }
-//Lydia
+//Completed-Lydia
     @Override
     public void reverse() {
-        // TODO Auto-generated method stub
-        
+        T temp;
+        int length = array.length;
+        for(int i = 0; i< length / 2; i++){
+            temp = array[i];
+            array[i] = array[length - i - 1];
+            array[length - i - 1] = temp;
+        }
     }
 //Bilese
     @Override
@@ -123,6 +130,4 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         // TODO Auto-generated method stub
         return false;
     }
-    
 }
-
