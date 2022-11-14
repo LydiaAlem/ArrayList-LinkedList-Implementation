@@ -1,48 +1,48 @@
 //somethig isnt right, idk what it is tho, office hours??
-public class LinkedList<T extends Comparable<T>> implements List{
+public class LinkedList<T extends Comparable<T>> implements List<T>{
     private int[] array;
     public LinkedList(){
 
     }
 
 
-
+//Lydia
     @Override
     public boolean add(T element) {
         // TODO Auto-generated method stub
         return false;
     }
-
+//Bilese
     @Override
     public boolean add(int index, T element) {
         // TODO Auto-generated method stub
         return false;
     }
-
+//Lydia
     @Override
     public void clear() {
         // TODO Auto-generated method stub
         
     }
-
+//Bilese
     @Override
     public T get(int index) {
         // TODO Auto-generated method stub
         return null;
     }
-
+//Lydia
     @Override
     public int indexOf(T element) {
         // TODO Auto-generated method stub
         return 0;
     }
-
+//Bilese
     @Override
     public boolean isEmpty() {
         // TODO Auto-generated method stub
         return false;
     }
-
+//Lydia
     @Override
     public int size() {
         // TODO Auto-generated method stub
