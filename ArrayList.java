@@ -1,10 +1,14 @@
-import java.util.Arrays;
+import java.util.Arrays; //Needed when copying/creating arrays
 
 public class ArrayList<T extends Comparable<T>> implements List<T>{
     //Class Attributes
     private T[] array;
     private int size = 0; //checks index 0, using it for size()
     private boolean isSorted;
+    
+/*
+I used size() instead of array.length in every method except size()
+*/
 
 //Constructor
 @SuppressWarnings("unchecked") //gets rid of underlined stuff
@@ -20,8 +24,8 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
             return false;
         }
         else {
-            array = Arrays.copyOf(array, array.length + 1); //creates a new array from old array and allocate one more element
-            array[array.length - 1] = element;
+            array = Arrays.copyOf(array, size() + 1); //creates a new array from old array and allocate one more element
+            array[size() - 1] = element;
             isSorted = false;
             return true;
         }
@@ -41,7 +45,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     @Override
     public T get(int index) {
         if(index >= 0){ //checks if the index isnt illegal
-            if(index < array.length){
+            if(index < size()){
                 return array[index];
             }
         }
@@ -50,7 +54,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
 //Completed-Lydia
     @Override
     public int indexOf(T element) {
-        for(int i = 0; i <array.length; i++){
+        for(int i = 0; i <size(); i++){
             if(array[i].equals(element)){
                 return i;
             }
@@ -61,7 +65,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
 //Completed-Lydia
     @Override 
     public boolean isEmpty() {
-        if(array.length == 0){ 
+        if(size() == 0){ 
             isSorted = true;
             return true;
         }
@@ -85,7 +89,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     @Override
     public T remove(int index) {
         try{
-            for(int i = 0; i<= array.length; i++){
+            for(int i = 0; i<= size(); i++){
                 if(array[i] == (array[index])){
                     return array[i];
                 }
@@ -105,7 +109,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     @Override
     public void reverse() {
         T temp;
-        int length = array.length;
+        int length = size();
         for(int i = 0; i< length / 2; i++){
             temp = array[i];
             array[i] = array[length - i - 1];
