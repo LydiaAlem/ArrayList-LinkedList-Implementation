@@ -85,7 +85,7 @@ I used size() instead of array.length in every method except size()
     @Override
     public void sort() {
     }
-//Lydia - once sorted is finished 
+//Lydia 
     @Override
     public T remove(int index) {
         try{
