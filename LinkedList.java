@@ -1,6 +1,9 @@
-//somethig isnt right, idk what it is tho, office hours??
 public class LinkedList<T extends Comparable<T>> implements List<T>{
+    
+    //Class attributes
     private int[] array;
+    
+    //Constructor
     public LinkedList(){
 
     }
