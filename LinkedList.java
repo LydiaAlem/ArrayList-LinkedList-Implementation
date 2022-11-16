@@ -2,6 +2,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T>{
     
     //Class attributes
     private int[] array;
+    private Node ptr;
     
     //Constructor
     public LinkedList(){
