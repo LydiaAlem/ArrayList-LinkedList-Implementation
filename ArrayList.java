@@ -128,10 +128,9 @@ I used size() instead of array.length in every method except size()
         // TODO Auto-generated method stub
         
     }
-//Bilese
+//Bilese-completed
     @Override
     public boolean isSorted() {
-        // TODO Auto-generated method stub
-        return false;
+        return isSorted;
     }
 }
