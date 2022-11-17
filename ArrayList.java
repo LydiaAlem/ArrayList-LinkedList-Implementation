@@ -94,7 +94,20 @@ I used size() instead of array.length in every method except size()
         }
     }
 }
-
+//Lydia 
+    @Override
+    public T remove(int index) {
+        try{
+            for(int i = 0; i<= this.size(); i++){
+                if(array[i] == (array[index])){
+                    array[i] = null;
+                    return array[i];
+                }
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+        }
+        return null;
+    }
 //Bilese
     @Override
     public void equalTo(T element) {
