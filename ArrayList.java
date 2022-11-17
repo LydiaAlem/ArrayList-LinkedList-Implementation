@@ -17,18 +17,18 @@ I used size() instead of array.length in every method except size()
         this.isSorted = true;
     }
  
-//Completed-Lydia
+/  //Completed
     @Override
     public boolean add(T element) {
-        if(element == null){
+        if (element == null) {
             return false;
-        }
-        else {
-            array = Arrays.copyOf(array, size() + 1); //creates a new array from old array and allocate one more element
-            array[size() - 1] = element;
+        } else {
+            this.growCopy(); //creates a new array from old array and allocate one more element
+            array[this.size()] = element;
             isSorted = false;
+            size++;
             return true;
-        }
+        }//Completed
     }
 //Completed!
 @Override
