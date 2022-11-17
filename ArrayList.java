@@ -54,7 +54,7 @@ I used size() instead of array.length in every method except size()
 //Completed-Lydia
     @Override
     public int indexOf(T element) {
-        for(int i = 0; i <size(); i++){
+        for(int i = 0; i <this.size(); i++){
             if(array[i].equals(element)){
                 return i;
             }
@@ -84,8 +84,8 @@ I used size() instead of array.length in every method except size()
  }
 //Lydia 
     public void sort() {
-        for(int i = 0; i< array.length - 1; i++){ //convert into i < array.size()
-            for(int j = 0; j< array.length - 1 - i; j++){//convert into j < array.size()
+        for(int i = 0; i< this.size() - 1; i++){ //convert into i < array.size()
+            for(int j = 0; j< this.size() - 1 - i; j++){//convert into j < array.size()
                 if (array[j].compareTo(array[j+1])<0) {
                     T temp = array[j];
                     array[j] = array[j + 1];
