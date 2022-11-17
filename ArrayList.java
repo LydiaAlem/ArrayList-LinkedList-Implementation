@@ -86,18 +86,17 @@ I used size() instead of array.length in every method except size()
     public void sort() {
     }
 //Lydia 
-    @Override
-    public T remove(int index) {
-        try{
-            for(int i = 0; i<= size(); i++){
-                if(array[i] == (array[index])){
-                    return array[i];
+    public void sort() {
+        for(int i = 0; i< array.length - 1; i++){ //convert into i < array.size()
+            for(int j = 0; j< array.length - 1 - i; j++){//convert into j < array.size()
+                if (array[j].compareTo(array[j+1])<0) {
+                    T temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
-            }
-        }catch (ArrayIndexOutOfBoundsException e){
         }
-        return null;
     }
+}
 
 //Bilese
     @Override
