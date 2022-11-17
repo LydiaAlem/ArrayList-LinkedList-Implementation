@@ -30,10 +30,22 @@ I used size() instead of array.length in every method except size()
             return true;
         }
     }
-//Bilese
-    @Override
-    public boolean add(int index, T element) {//use INSERTION/BUBBLE/SELECTION method from canvas page
-        return false;
+//Completed!
+@Override
+
+    public boolean add(int index, T element) {
+        if ((element == null) || (index < 0 || index >= this.size())) {
+            return false;
+        } else {
+            this.growCopy();
+            for (int i = this.size - 1; i > index; i--) {
+                if (i > index) {
+                    array[i] = array[i - 1];
+                }
+            }
+            array[index] = element;
+            return true;
+        }
     }
 //Completed-Lydia
     @SuppressWarnings("unchecked") //DONE
