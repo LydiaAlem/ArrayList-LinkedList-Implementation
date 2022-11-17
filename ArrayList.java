@@ -137,6 +137,18 @@ I used size() instead of array.length in every method except size()
         // TODO Auto-generated method stub
         
     }
+public boolean CheckisSorted(){
+        for(int i = 0; i <this.size;i++){
+            if(array[i].compareTo(array[i+1]) != 0){
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        return;
+    }
+
 //Bilese-completed
     @Override
     public boolean isSorted() {
