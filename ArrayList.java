@@ -81,10 +81,7 @@ I used size() instead of array.length in every method except size()
         }
         return size;
     }
-//Bilese
-    @Override
-    public void sort() {
-    }
+ }
 //Lydia 
     public void sort() {
         for(int i = 0; i< array.length - 1; i++){ //convert into i < array.size()
