@@ -140,8 +140,27 @@ I used size() instead of array.length in every method except size()
 //Bilese
     @Override
     public void merge(List<T> otherList) {
-        // TODO Auto-generated method stub
-        
+        if(otherList == null){
+            return;
+        }
+        ArrayList<T> other = (ArrayList<T>) otherList;
+        T[] newArray = (T[]) new Comparable[this.size() + other.size()];
+        this.sort();
+        other.sort();
+        isSorted = true;
+
+        for(int i = 0; i< this.size(); i++){
+            newArray[i] = array[i];
+        }
+        for(int j = 0; j< other.size(); j++){
+            newArray[this.size() + j] = other.get(j); //
+            if(newArray[j].compareTo(other.get(j)) > 0){
+                newArray[j] = other.get(j);
+            }
+        }
+
+        array = newArray; //making the original array NOW equal to the merged array
+        size += other.size();
     }
 //Lydia
     @Override
