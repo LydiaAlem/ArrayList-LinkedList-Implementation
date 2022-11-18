@@ -1,107 +1,226 @@
-public class LinkedList<T extends Comparable<T>> implements List<T>{
-    
-    //Class attributes
-    private int[] array;
-    private Node ptr;
-    
-    //Constructor
-    public LinkedList(){
+import java.util.*;
+public class LinkedList<T extends Comparable<T>> implements List<T> {
+    //Class Attributes:
+    private int size = 0;
+    private Node<T> first;
+    private boolean isSorted;
 
+    public LinkedList() {
+        first = new Node<T>(null);
+        isSorted = true;
     }
 
-
-//Lydia
     @Override
     public boolean add(T element) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-//Bilese
+        if (element == null) {
+            return false;
+        }
+        Node<T> newNode = new Node<T>(element, null);
+        if (first == null) {
+            first = new Node<T>(element);
+        }
+        else {
+            Node<T> ptr = first;
+            while (ptr.getNext() != null) {
+                    ptr = ptr.getNext();
+                }
+                newNode.setNext(ptr.getNext());
+                ptr.setNext(newNode);
+
+            }
+            isSorted = false;
+            size++;
+            return true;
+        }
+
     @Override
     public boolean add(int index, T element) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-//Lydia
+        if (element == null || index < 0 || index >= size) {
+            return false;
+        } else {
+            int i = 0;
+            Node<T> newNode = new Node<T>(element);
+            if (index == 0) {
+                newNode.setNext(first.getNext());
+                first.setNext(newNode);
+                size++;
+                return true;
+            }
+            else if (index == 1) {
+                newNode.setNext(first.getNext().getNext());
+                first.getNext().setNext(newNode);
+                size++;
+                return true;
+            }
+            Node<T> newNode2 = first;
+            while ((newNode2.getNext().getNext()) != null && i < index) {
+                i++;
+                newNode2 = newNode2.getNext();
+                }
+
+            newNode.setNext(newNode2.getNext());
+            newNode2.setNext(newNode);
+            size++;
+            return true;
+                }
+            }
+
+
     @Override
     public void clear() {
-        // TODO Auto-generated method stub
-        
+        first = null;
+        size = 0;
     }
-//Bilese
+
     @Override
     public T get(int index) {
-        // TODO Auto-generated method stub
-        return null;
+        Node<T> ptr;
+        if (index >= size || index < 0) {
+            return null;
+        }
+        ptr = first.getNext();
+        for (int i = 0; i < index; i++) {
+            ptr = ptr.getNext();
+        }
+        return ptr.getData();
     }
-//Lydia
+
     @Override
     public int indexOf(T element) {
-        // TODO Auto-generated method stub
-        return 0;
+        if (element != null && !isEmpty()) {
+            Node<T> temp = first;
+            int i = 0;
+            while (temp != null) {
+                if (temp.getData().compareTo(element) == 0) {
+                    return i;
+                }
+                i++;
+                temp = temp.getNext();
+                }
+            }
+            return -1;
     }
-//Bilese -- collected
+
     @Override
     public boolean isEmpty() {
-        for(int i = 0; i< link.size(); i++){
-            size+=1;
+        if (size != 0) {
+            return false;
         }
-        if(size == 0){
-            return(true);
-        }
-        else{
-            return(false);
-        }
+        return true;
     }
-//Bilese
+
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return size;
     }
-//Lydia
+
     @Override
     public void sort() {
-        // TODO Auto-generated method stub
-        
+        T temp;
+        Node<T> index;
+        Node<T> ptr = first.getNext();
+        if (first.getNext() == null) {
+            return;
+        }
+        else{
+            while (ptr != null){
+                index = ptr.getNext();
+                while (index != null){
+                    if (ptr.getData().compareTo(index.getData()) > 0){
+                        temp = ptr.getData();
+                        ptr.setData(index.getData());
+                        index.setData(temp);
+                    }
+                    index = index.getNext();
+                }
+                ptr = ptr.getNext();
+            }
+        }
     }
-//Remove
+
     @Override
     public T remove(int index) {
-        // TODO Auto-generated method stub
-        return null;
+        if (index < 0 || index >= size) {
+            return null;
+        }
+        Node<T> trail = first;
+        Node<T> ptr = first.getNext();
+        for (int i = 0; i < index; i++) {
+            trail = ptr;
+            ptr = ptr.getNext();
+        }
+        trail.setNext(ptr.getNext());
+        size--;
+        return ptr.getData();
     }
-//Lydia
+
     @Override
+    //TA
     public void equalTo(T element) {
-        // TODO Auto-generated method stub
-        
+        if (element != null) {
+            int count = 0;
+            Node<T> ptr = first.getNext();
+            Node<T> temp1 = new Node<T>(null);
+            Node<T> temp2 = ptr;
+            while (ptr != null) {
+                if (ptr.getData().compareTo(element) == 0) {
+                    temp2.setNext(ptr);
+                    temp2 = temp2.getNext();
+                    count++;
+                }
+                ptr = ptr.getNext();
+            }
+            temp2.setNext(null);
+            first = temp1;
+            size = count;
+        }
     }
-//Bilese
+
     @Override
     public void reverse() {
-        // TODO Auto-generated method stub
-        
+        Node<T> prev = null;
+        Node<T> curr = first.getNext();
+        Node<T> next = null;
+        while(curr != null) {
+            next = curr.getNext();
+            curr.setNext(prev);
+            prev = curr;
+            curr = next;
+        }
+        first.setNext(prev);
     }
-//Lydia
+
     @Override
-    public void merge(List otherList) {
-        // TODO Auto-generated method stub
-        
+    //TA
+    public void merge(List<T> otherList) {
+        // for the mergeSize do size + otherSize
+        // at the end make the mergeList your mainList
+        // there are different cases for both mainList and otherList
+        // some of them are like if both are null or one or the other is null
     }
-//Bilese
+
     @Override
     public void pairSwap() {
-        // TODO Auto-generated method stub
-        
+        Node<T> ptr = first.getNext();
+        while(ptr != null && ptr.getNext() != null){
+            T k = ptr.getData();
+            ptr.setData(ptr.getNext().getData());
+            ptr.getNext().setData(k);
+            ptr = ptr.getNext().getNext();
+        }
     }
-//Lydia
+
     @Override
     public boolean isSorted() {
-        // TODO Auto-generated method stub
-        return false;
+        Node<T> index;
+        Node<T> ptr = first;
+        index = ptr.getNext();
+        if (ptr.getData().compareTo(index.getData()) > 0) {
+            index = index.getNext();
+            ptr = ptr.getNext();
+            return false;
+        }
+        return true;
     }
-    
-    
 }
 
