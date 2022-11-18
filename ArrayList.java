@@ -121,11 +121,26 @@ I used size() instead of array.length in every method except size()
         return null;
     }
 //Bilese
-    @Override
-    public void equalTo(T element) {
-        // TODO Auto-generated method stub
-        
-    }
+     @Override
+        public void equalTo (T element){
+            int count = 0;
+            if (element == null) { //making sure element is NOT null
+                return;
+            }
+            for (int i = 0; i < this.size(); i++) { //seeing if their exists an element thats in array
+                if (array[i].compareTo(element) == 0) {
+                    count++;
+                }
+            }
+            T[] newArray = (T[]) new Comparable[this.size() - (this.size() - count)];
+
+            for (int i = 0; i < newArray.length; i++) {
+                newArray[i] = element;
+            }
+            array = newArray;
+            size = newArray.length; //resizing size
+
+        }
 //Completed-Lydia
     @Override
     public void reverse() {
