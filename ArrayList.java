@@ -112,8 +112,6 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     }
 
 
-
-
  //O(n)
     @Override
     public T remove(int index) {
@@ -241,4 +239,3 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     }
 
 }
-
