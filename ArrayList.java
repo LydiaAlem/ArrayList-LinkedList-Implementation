@@ -231,9 +231,10 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     }
     public String toString(){
         String out = "";
-        for(int i = 0; i< this.size(); i++){
+        int i = 0;
+        while (i < this.size()){
             out += array[i] + "\n";
+            i++;
         }
-        return out;
-    }
+        return out; }
 }
