@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 public class ArrayList<T extends Comparable<T>> implements List<T>{
     private T[] array;
     private int size = 0; 
@@ -94,20 +93,22 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     }
     
     @Override
-    public void sort() {
-        for (int i = 0; i < this.size() - 1; i++)
-        for (int j = 0; j < this.size()-i-1; j++)
-            if (array[j] != null && array[j].compareTo(array[j + 1]) > 0) {
-                T temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
+    public void sort() {//using insertion sort to sort the T[] array
+        for (int i = 1; i < this.size(); ++i) {
+            T ele = array[i];
+            int j = i - 1;
+            while (j >= 0 && array[j].compareTo(ele) > 0) {
+                array[j + 1] = array[j];
+                j = j - 1;
             }
-        isSorted = true;
+            array[j + 1] = ele;
+            isSorted = true;
+    }
     }
 
     @Override
     public T remove(int index) {
-        if ((index < 0 || index > this.size()) || array[index] == null) { //seeing if oob or null
+        if ((index < 0 || index > this.size()) || array[index] == null) {
             this.checkSort();
             return null;
         }
