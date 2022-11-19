@@ -205,23 +205,18 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
             j+=2;
         }
     }
-
-    public boolean checkSort(){
-        if(this.size() == 0 || this.size() == 1){
+    public boolean checkSort() {
+        if (this.size() == 1 || this.size() == 0) {
             isSorted = true;
             return true;
         }
-        for(int i = 0; i<this.size(); i++){ 
-            if(array[i] == null){
+        int i = 0;
+        while (i < this.size() - 1) {
+            if (array[i].compareTo(array[i + 1]) > 0) {
                 isSorted = false;
                 return false;
             }
-        }
-        for(int i = 0; i< this.size() -1; i++){
-            if(array[i].compareTo(array[i+1]) > 0){ 
-                isSorted = false;
-                return false;
-            }
+            i++;
         }
         isSorted = true;
         return true;
