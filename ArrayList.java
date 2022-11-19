@@ -1,127 +1,138 @@
-import java.util.Arrays; //Needed when copying/creating arrays
+import java.util.Arrays;
 
 public class ArrayList<T extends Comparable<T>> implements List<T>{
-    //Class Attributes
+    //Instance Variables
     private T[] array;
     private int size = 0; //checks index 0, using it for size()
     private boolean isSorted;
-    
-/*
-I used size() instead of array.length in every method except size()
-*/
 
-//Constructor
-@SuppressWarnings("unchecked") //gets rid of underlined stuff
-    public ArrayList(ArrayList<T> a, boolean isSorted) { //Constructor
+
+    @SuppressWarnings("unchecked") //gets rid of underlined stuff
+    public ArrayList() { //Constructor
         array = (T[]) new Comparable[2];
         this.isSorted = true;
     }
- 
-/  //Completed
+
+    public void growCopy(){
+        array = Arrays.copyOf(array, array.length + 1);
+    }
+
+    //Completed
     @Override
     public boolean add(T element) {
         if (element == null) {
             return false;
         } else {
-            this.growCopy(); //creates a new array from old array and allocate one more element
+            this.growCopy();
             array[this.size()] = element;
             isSorted = false;
-            size++;
-            return true;
-        }//Completed
+        }
+        size++;
+        return true;
     }
-//Completed!
-@Override
 
+    //Lydia
+    @Override
+    //check if index is less than 0 or greater than this.size()
     public boolean add(int index, T element) {
-        if ((element == null) || (index < 0 || index >= this.size())) {
+        if ((element == null) || (index < 0 || index > this.size())) {
             return false;
         } else {
             this.growCopy();
-            for (int i = this.size - 1; i > index; i--) {
-                if (i > index) {
+            for (int i = this.size; i > index; i--) {
+                if (i >   index) {
                     array[i] = array[i - 1];
                 }
             }
             array[index] = element;
+            size++;
             return true;
         }
     }
-//Completed-Lydia
+    //Completed
     @SuppressWarnings("unchecked") //DONE
     public void clear() {
         array = (T[]) new Comparable[2];
         size = 0;
+        isSorted = true;
     }
-//Completed-Lydia
+//Completed
     @Override
-    public T get(int index) {
-        if(index >= 0){ //checks if the index isnt illegal
-            if(index < size()){
-                return array[index];
+
+    public T get(int index) { //why aren't we getting null for negative indicies.
+        if(index < 0 || index >=this.size()){
+            return null;
             }
+        else{
+            return array[index];
         }
-        return null;
     }
-//Completed-Lydia
+
+    //Completed
     @Override
     public int indexOf(T element) {
-        for(int i = 0; i <this.size(); i++){
-            if(array[i].equals(element)){
+        if(element == null){
+            return -1;
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == element) {
                 return i;
             }
         }
-        return 0;
-    }
+        return -1;
+        }
 
-//Completed-Lydia
-    @Override 
+
+    //Completed
+    @Override
     public boolean isEmpty() {
-        if(size() == 0){ 
+        if(size == 0){
             isSorted = true;
             return true;
         }
         return false;
     }
 
-//Completed
-    @Override 
+    //Completed
+    @Override
     public int size() {
-        int size = 0;
-        for(int i = 0; i< array.length; i++){
-            size += 1;
-        }
         return size;
     }
- }
-//Lydia 
+    //Completed
+    @Override
     public void sort() {
-        for(int i = 0; i< this.size() - 1; i++){ //convert into i < array.size()
-            for(int j = 0; j< this.size() - 1 - i; j++){//convert into j < array.size()
-                if (array[j].compareTo(array[j+1])<0) {
-                    T temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-        }
+        for (int i = 0; i < this.size() - 1; i++)
+        for (int j = 0; j < this.size()-i-1; j++)
+            if (array[j] != null && array[j].compareTo(array[j + 1]) > 0) {
+                T temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
     }
-}
-//Lydia 
+
+
+
+
+    //Completed
     @Override
     public T remove(int index) {
-        try{
-            for(int i = 0; i<= this.size(); i++){
-                if(array[i] == (array[index])){
-                    array[i] = null;
-                    return array[i];
-                }
-            }
-        }catch (ArrayIndexOutOfBoundsException e){
+
+        if ((index < 0 || index > this.size()) || array[index] == null) { //seeing if oob or null
+            return null;
         }
-        return null;
-    }
-//Bilese
-     @Override
+            T out = array[index];
+            for (int i = index; i < this.size() - 1; i++) {
+                array[i] = array[i+1];
+            }
+            size--;
+            return out;
+        }
+
+
+
+
+
+        @Override
         public void equalTo (T element){
             int count = 0;
             if (element == null) { //making sure element is NOT null
@@ -141,18 +152,19 @@ I used size() instead of array.length in every method except size()
             size = newArray.length; //resizing size
 
         }
-//Completed-Lydia
+
+    //Completed
     @Override
     public void reverse() {
-        T temp;
-        int length = size();
-        for(int i = 0; i< length / 2; i++){
-            temp = array[i];
-            array[i] = array[length - i - 1];
-            array[length - i - 1] = temp;
+        for(int i = 0; i < size / 2; i++){
+            T temp = array[i];
+            array[i] = array[size - i - 1];
+            array[size - i - 1] = temp;
         }
+        this.checkSort();
     }
-//Bilese
+    //Lydia
+    @SuppressWarnings("unchecked")
     @Override
     public void merge(List<T> otherList) {
         if(otherList == null){
@@ -177,24 +189,48 @@ I used size() instead of array.length in every method except size()
         array = newArray; //making the original array NOW equal to the merged array
         size += other.size();
     }
-//Lydia
+
+    //
     @Override
     public void pairSwap() {
-        // TODO Auto-generated method stub
-        
+
+        int i = 0;
+        int j = 1;
+        while(i < this.size() && j < this.size()){
+            T temp = array[i];
+            T first = array[j];
+            T second = temp;
+            array[i] = first;
+            array[j] = second;
+            i+=2;
+            j+=2;
+        }
+        this.checkSort();
     }
- public boolean checkSort(){
+
+    public boolean checkSort(){
+        if(this.size() == 0){
+            isSorted = true;
+            return true;
+        }
         for(int i = 0; i< this.size() -1; i++){
             if(array[i].compareTo(array[i+1]) > 0){ //this is jst like saying array[i]> array[i+1]
+                isSorted = false;
                 return false;
             }
         }
         return true;
     }
-
-//Bilese-completed
     @Override
     public boolean isSorted() {
         return isSorted;
     }
+    public String toString(){
+        String out = "";
+        for(int i = 0; i< this.size(); i++){
+            out += array[i] + "\n";
+        }
+        return out;
+    }
+
 }
