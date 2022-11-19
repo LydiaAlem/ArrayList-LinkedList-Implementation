@@ -7,7 +7,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     private boolean isSorted;
 
 
-    @SuppressWarnings("unchecked") //gets rid of underlined stuff
+    @SuppressWarnings("unchecked")
     public ArrayList() { //Constructor
         array = (T[]) new Comparable[2];
         isSorted = true;
@@ -17,7 +17,6 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         array = Arrays.copyOf(array, array.length + 1);
     }
 
-    //Completed
     @Override
     public boolean add(T element) {
         if (element == null) {
@@ -31,9 +30,8 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         return true;
     }
 
-    //Lydia
+  
     @Override
-    //check if index is less than 0 or greater than this.size()
     public boolean add(int index, T element) {
         if ((element == null) || (index < 0 || index > this.size())) {
             return false;
@@ -50,17 +48,17 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
             return true;
         }
     }
-    //Completed
-    @SuppressWarnings("unchecked") //DONE
+   
+    @SuppressWarnings("unchecked") 
     public void clear() {
         array = (T[]) new Comparable[2];
         size = 0;
         isSorted = true;
     }
-//Completed
+
     @Override
 
-    public T get(int index) { //why aren't we getting null for negative indicies.
+    public T get(int index) { 
         if(index < 0 || index >=this.size()){
             return null;
             }
@@ -69,7 +67,6 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
     }
 
-    //Completed
     @Override
     public int indexOf(T element) {
         if(element == null){
@@ -84,8 +81,6 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         return -1;
         }
 
-
-    //Completed
     @Override
     public boolean isEmpty() {
         if(size == 0){
@@ -95,12 +90,12 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         return false;
     }
 
-    //Completed
+   
     @Override
     public int size() {
         return size;
     }
-    //Completed
+    
     @Override
     public void sort() {
         for (int i = 0; i < this.size() - 1; i++)
@@ -113,10 +108,6 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         isSorted = true;
     }
 
-
-
-
-    //Completed
     @Override
     public T remove(int index) {
         if ((index < 0 || index > this.size()) || array[index] == null) { //seeing if oob or null
@@ -133,13 +124,13 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
 
 
-        @Override
-        public void equalTo (T element){
+    @Override
+    public void equalTo (T element){
             int count = 0;
-            if (element == null) { //making sure element is NOT null
+            if (element == null) { 
                 return;
             }
-            for (int i = 0; i < this.size(); i++) { //seeing if their exists an element thats in array
+            for (int i = 0; i < this.size(); i++) { /
                 if (array[i].compareTo(element) == 0) {
                     count++;
                 }
@@ -150,22 +141,24 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
                 newArray[i] = element;
             }
             array = newArray;
-            size = newArray.length; //resizing size
+            size = newArray.length; 
             this.checkSort();
 
         }
 
-    //Completed
-    @Override
+    Override
     public void reverse() {
-        for(int i = 0; i < size / 2; i++) {
-            T temp = array[i];
-            array[i] = array[size - i - 1];
-            array[size - i - 1] = temp;
+        int half = size/2;
+        int x = 0;
+        while(x< half){
+            T temp = array[x];
+            array[x] = array[size - x - 1];
+            array[size - x - 1] = temp;
+            x++;
         }
         this.checkSort();
     }
-    //Lydia
+   
     @SuppressWarnings("unchecked")
     @Override
 
@@ -220,14 +213,14 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
             isSorted = true;
             return true;
         }
-        for(int i = 0; i<this.size(); i++){ //checking if any element
+        for(int i = 0; i<this.size(); i++){ 
             if(array[i] == null){
                 isSorted = false;
                 return false;
             }
         }
         for(int i = 0; i< this.size() -1; i++){
-            if(array[i].compareTo(array[i+1]) > 0){ //this is jst like saying array[i]> array[i+1]
+            if(array[i].compareTo(array[i+1]) > 0){ 
                 isSorted = false;
                 return false;
             }
@@ -246,5 +239,4 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
         return out;
     }
-
 }
