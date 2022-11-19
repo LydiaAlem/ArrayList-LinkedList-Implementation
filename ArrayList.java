@@ -223,6 +223,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
                 return false;
             }
         }
+        isSorted = true;
         return true;
     }
      //O(1)
