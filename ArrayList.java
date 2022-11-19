@@ -12,12 +12,12 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         array = (T[]) new Comparable[2];
         this.isSorted = true;
     }
-
+//O(1)
     public void growCopy(){
         array = Arrays.copyOf(array, array.length + 1);
     }
 
-    //Completed
+//O(1)
     @Override
     public boolean add(T element) {
         if (element == null) {
@@ -31,7 +31,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         return true;
     }
 
-    //Lydia
+ //O(n)
     @Override
     //check if index is less than 0 or greater than this.size()
     public boolean add(int index, T element) {
@@ -56,10 +56,10 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         size = 0;
         isSorted = true;
     }
-//Completed
-    @Override
 
-    public T get(int index) { //why aren't we getting null for negative indicies.
+ //O(1)
+    @Override
+    public T get(int index) { 
         if(index < 0 || index >=this.size()){
             return null;
             }
@@ -68,7 +68,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
     }
 
-    //Completed
+ //O(n)
     @Override
     public int indexOf(T element) {
         if(element == null){
@@ -83,7 +83,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
 
 
-    //Completed
+ //O(1)
     @Override
     public boolean isEmpty() {
         if(size == 0){
@@ -93,12 +93,13 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         return false;
     }
 
-    //Completed
+ //O(1)
     @Override
     public int size() {
         return size;
     }
-    //Completed
+    
+ //O(n^2)
     @Override
     public void sort() {
         for (int i = 0; i < this.size() - 1; i++)
@@ -113,7 +114,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
 
 
 
-    //Completed
+ //O(n)
     @Override
     public T remove(int index) {
 
@@ -127,11 +128,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
             size--;
             return out;
         }
-
-
-
-
-
+ //O(n)
         @Override
         public void equalTo (T element){
             int count = 0;
@@ -153,7 +150,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
 
         }
 
-    //Completed
+ //O(n)
     @Override
     public void reverse() {
         for(int i = 0; i < size / 2; i++){
@@ -163,7 +160,8 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
         this.checkSort();
     }
-    //Lydia
+
+     //O(n^2)
     @SuppressWarnings("unchecked")
     @Override
 
@@ -196,6 +194,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         size += other.size();
     }
 
+ //O(n^2)
     @Override
     public void pairSwap() {
 
@@ -212,7 +211,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
         this.checkSort();
     }
-
+ //O(n)
     public boolean checkSort(){
         if(this.size() == 0){
             isSorted = true;
@@ -226,10 +225,12 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         }
         return true;
     }
+     //O(1)
     @Override
     public boolean isSorted() {
         return isSorted;
     }
+     //O(n)
     public String toString(){
         String out = "";
         for(int i = 0; i< this.size(); i++){
