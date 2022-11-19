@@ -166,6 +166,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     //Lydia
     @SuppressWarnings("unchecked")
     @Override
+
     public void merge(List<T> otherList) {
         if(otherList == null){
             return;
@@ -174,23 +175,27 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         T[] newArray = (T[]) new Comparable[this.size() + other.size()];
         this.sort();
         other.sort();
-        isSorted = true;
+        this.checkSort();
 
-        for(int i = 0; i< this.size(); i++){
-            newArray[i] = array[i];
-        }
-        for(int j = 0; j< other.size(); j++){
-            newArray[this.size() + j] = other.get(j); //
-            if(newArray[j].compareTo(other.get(j)) > 0){
-                newArray[j] = other.get(j);
+        int i = 0, j= 0, k= 0;
+        while (i < this.size() && j < other.size()) {
+            if (array[i].compareTo(other.get(j)) < 0) {
+                newArray[k++] = array[i++];
+            }
+            else {
+                newArray[k++] = other.get(j++);
             }
         }
-
-        array = newArray; //making the original array NOW equal to the merged array
+        while (i < this.size()) {
+            newArray[k++] = array[i++];
+        }
+        while (j < other.size()) {
+            newArray[k++] = other.get(j++);
+        }
+        array = newArray;
         size += other.size();
     }
 
-    //
     @Override
     public void pairSwap() {
 
@@ -234,3 +239,4 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     }
 
 }
+
