@@ -192,7 +192,7 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
         size += other.size();
     }
 
- //O(n^2)
+ //O(n)
     @Override
     public void pairSwap() {
 
