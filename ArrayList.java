@@ -1,9 +1,8 @@
 import java.util.Arrays;
 
 public class ArrayList<T extends Comparable<T>> implements List<T>{
-    //Instance Variables
     private T[] array;
-    private int size = 0; //checks index 0, using it for size()
+    private int size = 0; 
     private boolean isSorted;
 
 
