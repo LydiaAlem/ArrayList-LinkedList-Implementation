@@ -1,4 +1,3 @@
-import java.util.*;
 public class LinkedList<T extends Comparable<T>> implements List<T> {
     //Class Attributes:
     private int size = 0;
@@ -24,11 +23,8 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
             while (ptr.getNext() != null) {
                     ptr = ptr.getNext();
                 }
-                newNode.setNext(ptr.getNext());
                 ptr.setNext(newNode);
-
             }
-            isSorted = false;
             size++;
             return true;
         }
@@ -94,8 +90,8 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                 if (temp.getData().compareTo(element) == 0) {
                     return i;
                 }
-                i++;
-                temp = temp.getNext();
+                    i++;
+                    temp = temp.getNext();
                 }
             }
             return -1;
@@ -136,6 +132,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
                 ptr = ptr.getNext();
             }
         }
+        isSorted = true;
     }
 
     @Override
@@ -151,17 +148,17 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
         }
         trail.setNext(ptr.getNext());
         size--;
+        isSorted();
         return ptr.getData();
     }
 
     @Override
-    //TA
     public void equalTo(T element) {
         if (element != null) {
             int count = 0;
             Node<T> ptr = first.getNext();
             Node<T> temp1 = new Node<T>(null);
-            Node<T> temp2 = ptr;
+            Node<T> temp2 = temp1;
             while (ptr != null) {
                 if (ptr.getData().compareTo(element) == 0) {
                     temp2.setNext(ptr);
@@ -193,11 +190,39 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     @Override
     //TA
     public void merge(List<T> otherList) {
-        // for the mergeSize do size + otherSize
-        // at the end make the mergeList your mainList
-        // there are different cases for both mainList and otherList
-        // some of them are like if both are null or one or the other is null
-    }
+        LinkedList<T> other = (LinkedList<T>) otherList;
+        sort();
+        other.sort();
+        int mergedSize = size + other.size;
+        if (first.getNext() == null || other.first.getNext() == null) {
+            return; }
+        Node<T> mList = new Node<T>(null);
+        Node<T> mPtr = mList;
+        Node<T> temp1 = first.getNext();
+        Node<T> temp2 = other.first.getNext();
+        while(temp1 != null && temp2 != null) {
+            Node<T> temp;
+            if (temp1.getData().compareTo(temp2.getData()) > 0) {
+                temp = temp2;
+                temp2 = temp2.getNext();
+            }
+            else {
+                temp = temp1;
+                temp1 = temp1.getNext();
+            }
+            mPtr.setNext(temp);
+            mPtr = mPtr.getNext();
+        }
+        if (temp1 == null) {
+            mPtr.setNext(temp2);
+        }
+        else if (temp2 == null) {
+            mPtr.setNext(temp1);
+            }
+        isSorted = true;
+        size = mergedSize;
+        first = mList;
+        }
 
     @Override
     public void pairSwap() {
@@ -212,15 +237,6 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
     @Override
     public boolean isSorted() {
-        Node<T> index;
-        Node<T> ptr = first;
-        index = ptr.getNext();
-        if (ptr.getData().compareTo(index.getData()) > 0) {
-            index = index.getNext();
-            ptr = ptr.getNext();
-            return false;
-        }
-        return true;
+        return isSorted;
     }
 }
-
