@@ -7,21 +7,18 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
 
 
     @SuppressWarnings("unchecked")
-    public ArrayList() { //Constructor
+    public ArrayList() { 
         array = (T[]) new Comparable[2];
         isSorted = true;
-    }
-
-    public void growCopy(){
-        array = Arrays.copyOf(array, array.length + 1);
     }
 
     @Override
     public boolean add(T element) {
         if (element == null) {
             return false;
-        } else {
-            this.growCopy();
+        } 
+        else {
+            array = Arrays.copyOf(array, array.length + 1);
             array[this.size()] = element;
         }
         size++;
@@ -34,8 +31,9 @@ public class ArrayList<T extends Comparable<T>> implements List<T>{
     public boolean add(int index, T element) {
         if ((element == null) || (index < 0 || index > this.size())) {
             return false;
-        } else {
-            this.growCopy();
+        } 
+        else {
+            array = Arrays.copyOf(array, array.length + 1);
             for (int i = this.size; i > index; i--) {
                 if (i >   index) {
                     array[i] = array[i - 1];
