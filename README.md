@@ -1,2 +1,4 @@
-How to compile/run the program:
-Use the ArrayListTest.java and LinkedListTest.java to test the code.
+# ArrayList & LinkedList Implementation
+    Q: How to compile/run the program? 
+      > Use the ArrayListTest.java  
+      > Use the LinkedListTest.java 
