@@ -10,15 +10,18 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     }
 
     public boolean checkSorted() {
-        Node<T>  top = headr.getNext();
+        Node<T> top = headr.getNext();
         if (top == null) {
             return true;
         }
-        for (Node<T> h = top; h.getNext() != null; h = h.getNext()) {
-            if (h.getData().compareTo(h.getNext().getData()) > 0) {
+        while(top.getNext() != null){
+            if(top.getData().compareTo(top.getNext().getData()) > 0){
+                isSorted = false;
                 return false;
             }
+            top = top.getNext();
         }
+        iSorted = true;
         return true;
     }
 
