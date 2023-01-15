@@ -17,8 +17,8 @@
 ##### 2) Navigate to the project directory:
     >> cd ArrayList-LinkedList-Implementation
                 
-##### 4) Run the JUnit program for BOTH lists
-    >> On VS Code, this requires additional installation [(Click here for more information!)](https://code.visualstudio.com/docs/java/java-debugging)
+##### 4) Run the JUnit program for BOTH lists [(Click here for more information!)](https://code.visualstudio.com/docs/java/java-debugging)
+    >> On VS Code, this requires additional installation 
     >> run ArrayListTest.java
     >> run LinkedListTest.java
         
