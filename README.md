@@ -9,7 +9,7 @@
 
 <img src="https://github.com/LydiaAlem/Assembly-LCD-Clock/assets/107647071/06ac4f62-e026-45bc-8292-adb29cfd6c59" alt="Assembly Logo" width="60" height="60"> 
 
-<img src="https://github.com/LydiaAlem/ArrayList-LinkedList-Implementation/assets/107647071/c3454607-e62f-4767-bc66-0667f244e401" alt="Assembly Logo" width="60" height="60"> 
+<img src="https://github.com/LydiaAlem/ArrayList-LinkedList-Implementation/assets/107647071/c3454607-e62f-4767-bc66-0667f244e401" alt="Assembly Logo" width="120" height="60"> 
 
 ## Getting Started
                 
