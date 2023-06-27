@@ -11,8 +11,6 @@
 
 <img src="https://github.com/LydiaAlem/ArrayList-LinkedList-Implementation/assets/107647071/c3454607-e62f-4767-bc66-0667f244e401" alt="junit Logo" width="110" height="50"> 
 
-<img src="https://github.com/LydiaAlem/ArrayList-LinkedList-Implementation/assets/107647071/ba1c8746-1d02-4da6-a192-9d82134a15db" alt="maven Logo" width="110" height="50"> 
-
 ## Getting Started
                 
 ### Prerequisites [(Click here!)](https://code.visualstudio.com/docs/java/java-tutorial)
