@@ -31,9 +31,9 @@
         
 ## Built with
 
-#### * Java - programming language used. 
-#### * Maven - dependency management. [(Click here for more info!)](https://spring.io/guides/gs/maven/)
-#### * JUnit - tests the behavior of methods inside the ArrayList.java class & LinkedList.java [(Click here for more info!)](https://code.visualstudio.com/docs/java/java-testing)
+#### --> Java - programming language used. 
+#### --> Maven - dependency management. [(Click here for more info!)](https://spring.io/guides/gs/maven/)
+#### --> JUnit - tests the behavior of methods inside the ArrayList.java class & LinkedList.java [(Click here for more info!)](https://code.visualstudio.com/docs/java/java-testing)
     
  
 ## JUNIT test cases for LinkedListTest & ArrayListTest: 
