@@ -16,8 +16,7 @@ sort(), and many more. It also includes JUNIT test files to insure the accuracy 
                 
 ### Prerequisites [(Click here!)](https://code.visualstudio.com/docs/java/java-tutorial)
 
-Install Java 8 or higher
-```brew install java```
+Install Java 8 or higher --> ```brew install java```
         
 ### Installing
 ##### 1) Clone the directory
