@@ -1,7 +1,8 @@
 # ArrayList & LinkedList implementation!
-    This was a project completed in an Algorithms and Data Structure course. We implemented a full Linked 
-    List implementation and ArrayList implementation that has a functions like reverse(), pairSwap(), 
-    sort(), and many more. It also includes JUNIT test files to insure the accuracy of the functions!
+
+This was a project completed in an Algorithms and Data Structure course. We implemented a full Linked 
+List implementation and ArrayList implementation that has a functions like reverse(), pairSwap(), 
+sort(), and many more. It also includes JUNIT test files to insure the accuracy of the functions!
 
 ## Language & Software used:
 
